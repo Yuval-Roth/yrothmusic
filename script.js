@@ -10,7 +10,6 @@ const studioImage = document.querySelector("#studio-image");
 const galleryCurrent = document.querySelector("#gallery-current");
 const galleryTotal = document.querySelector("#gallery-total");
 const projectGrid = document.querySelector("#project-grid");
-const contactForm = document.querySelector("#contact-form");
 const scrollTopButtons = Array.from(document.querySelectorAll("[data-scroll-top]"));
 
 const studioImages = [
@@ -256,13 +255,6 @@ navLinks.forEach((link) => {
 
 document.querySelector(".gallery-prev").addEventListener("click", () => updateGallery(-1));
 document.querySelector(".gallery-next").addEventListener("click", () => updateGallery(1));
-
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const status = contactForm.querySelector(".form-status");
-  status.textContent = "Thanks. Your message is ready to connect to an email or form service.";
-  contactForm.reset();
-});
 
 scrollTopButtons.forEach((button) => {
   button.addEventListener("click", () => {

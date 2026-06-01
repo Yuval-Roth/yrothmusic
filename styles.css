@@ -379,7 +379,7 @@ img {
 .about-copy p,
 .story-inner p,
 .section-heading p {
-  margin: 0 0 12px;
+  margin: 0 12px 12px;
   color: var(--muted-ink);
   font-size: 22px;
   line-height: 1.32;
@@ -409,14 +409,12 @@ img {
 .section-inner {
   width: min(100%, var(--site-width));
   margin: 0 auto;
-  padding: 72px 16px;
+  padding: 50px 72px 50px 25px;
 }
 
 .contact-layout {
-  display: grid;
-  grid-template-columns: 330px 1fr;
-  gap: 48px;
-  align-items: start;
+  display: flex;
+  gap: 100px;
 }
 
 .studio-section {
@@ -542,7 +540,7 @@ img {
 
 .project-actions {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 18px;
   padding: 14px 22px 0;
 }
@@ -563,53 +561,44 @@ img {
   background: var(--teal);
 }
 
-.contact-form {
-  display: grid;
+.contact-card {
+  display: flex;
+  flex-direction: column;
   gap: 18px;
+  align-items: center;
+  justify-content: end
 }
 
-.contact-form label {
-  display: grid;
-  gap: 7px;
-  color: var(--ink);
-  font-size: 17px;
+.contact-card p {
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: 22px;
+  line-height: 1.32;
   font-weight: 700;
+  text-wrap: nowrap;
 }
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--ink);
-  font: inherit;
-  font-size: 18px;
-  padding: 12px 14px;
-}
-
-.contact-form textarea {
-  resize: vertical;
-}
-
-.contact-form button {
-  width: 120px;
-  min-height: 44px;
+.whatsapp-link {
+  width: fit-content;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
   border: 1px solid var(--ink);
   border-radius: 4px;
   background: var(--ink);
   color: var(--white);
-  font: inherit;
   font-size: 18px;
   font-weight: 700;
-  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
 }
 
-.form-status {
-  min-height: 24px;
-  margin: 0;
-  color: var(--ink);
-  font-size: 16px;
+.whatsapp-link:hover,
+.whatsapp-link:focus-visible {
+  background: var(--accent);
+  color: var(--white);
 }
 
 .site-footer {
@@ -799,6 +788,7 @@ img {
   .about-grid,
   .section-inner,
   .story-inner {
+    gap: 30px;
     padding-left: 14px;
     padding-right: 14px;
   }
@@ -878,5 +868,17 @@ img {
 @media (max-width: 480px) {
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    margin-right: 20px;
+  }
+
+  .contact-card p {
+    font-size: 16px;
+  }
+
+  .whatsapp-link {
+    font-size: 14px;
   }
 }
