@@ -593,22 +593,30 @@ img {
     display: none;
     position: absolute;
     top: 164px;
-    left: 0;
-    right: 0;
+    left: 16px;
+    right: 16px;
     z-index: 10;
-    padding: 16px 24px 20px;
-    background: var(--panel-bg);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.24);
   }
 
   .primary-nav.is-open {
     display: grid;
-    gap: 10px;
+    gap: 4px;
   }
 
   .primary-nav a {
+    padding: 12px 14px;
+    border-radius: 6px;
     font-size: 24px;
+  }
+
+  .primary-nav a:hover,
+  .primary-nav a.is-active {
+    background: rgba(116, 150, 146, 0.16);
   }
 
   .social-links {

@@ -196,6 +196,25 @@ menuToggle.addEventListener("click", () => {
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
+document.addEventListener("click", (event) => {
+  if (!nav.classList.contains("is-open")) {
+    return;
+  }
+
+  if (nav.contains(event.target) || menuToggle.contains(event.target)) {
+    return;
+  }
+
+  closeMenu();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && nav.classList.contains("is-open")) {
+    closeMenu();
+    menuToggle.focus();
+  }
+});
+
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     setActiveNav(link.dataset.nav);
