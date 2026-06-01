@@ -1,6 +1,10 @@
 const navLinks = Array.from(document.querySelectorAll("[data-nav]"));
 const nav = document.querySelector("#primary-nav");
 const menuToggle = document.querySelector(".menu-toggle");
+const siteHeader = document.querySelector(".site-header");
+const miniHeader = document.querySelector(".mini-header");
+const miniNav = document.querySelector("#mini-nav");
+const miniMenuToggle = document.querySelector(".mini-menu-toggle");
 const sections = Array.from(document.querySelectorAll("[data-section]"));
 const studioImage = document.querySelector("#studio-image");
 const galleryCurrent = document.querySelector("#gallery-current");
@@ -135,9 +139,20 @@ function updateCurrentSection() {
   }
 }
 
+function updateMiniHeaderVisibility() {
+  const shouldShow = window.scrollY > siteHeader.offsetHeight - 24;
+  miniHeader.classList.toggle("is-visible", shouldShow);
+
+  if (!shouldShow) {
+    closeMenu();
+  }
+}
+
 function closeMenu() {
   nav.classList.remove("is-open");
   menuToggle.setAttribute("aria-expanded", "false");
+  miniNav.classList.remove("is-open");
+  miniMenuToggle.setAttribute("aria-expanded", "false");
 }
 
 function updateGallery(direction) {
@@ -192,16 +207,32 @@ function renderProjects() {
 }
 
 menuToggle.addEventListener("click", () => {
+  miniNav.classList.remove("is-open");
+  miniMenuToggle.setAttribute("aria-expanded", "false");
   const isOpen = nav.classList.toggle("is-open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
+miniMenuToggle.addEventListener("click", () => {
+  nav.classList.remove("is-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  const isOpen = miniNav.classList.toggle("is-open");
+  miniMenuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
 document.addEventListener("click", (event) => {
-  if (!nav.classList.contains("is-open")) {
+  const menuIsOpen = nav.classList.contains("is-open") || miniNav.classList.contains("is-open");
+
+  if (!menuIsOpen) {
     return;
   }
 
-  if (nav.contains(event.target) || menuToggle.contains(event.target)) {
+  if (
+    nav.contains(event.target) ||
+    menuToggle.contains(event.target) ||
+    miniNav.contains(event.target) ||
+    miniMenuToggle.contains(event.target)
+  ) {
     return;
   }
 
@@ -209,9 +240,10 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && nav.classList.contains("is-open")) {
+  if (event.key === "Escape" && (nav.classList.contains("is-open") || miniNav.classList.contains("is-open"))) {
+    const focusTarget = miniNav.classList.contains("is-open") ? miniMenuToggle : menuToggle;
     closeMenu();
-    menuToggle.focus();
+    focusTarget.focus();
   }
 });
 
@@ -240,8 +272,15 @@ scrollTopButtons.forEach((button) => {
   });
 });
 
-window.addEventListener("scroll", updateCurrentSection, { passive: true });
-window.addEventListener("resize", updateCurrentSection);
+window.addEventListener("scroll", () => {
+  updateCurrentSection();
+  updateMiniHeaderVisibility();
+}, { passive: true });
+window.addEventListener("resize", () => {
+  updateCurrentSection();
+  updateMiniHeaderVisibility();
+});
 galleryTotal.textContent = String(studioImages.length);
 renderProjects();
 updateCurrentSection();
+updateMiniHeaderVisibility();
