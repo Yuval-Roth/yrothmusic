@@ -7,6 +7,7 @@ const galleryCurrent = document.querySelector("#gallery-current");
 const galleryTotal = document.querySelector("#gallery-total");
 const projectGrid = document.querySelector("#project-grid");
 const contactForm = document.querySelector("#contact-form");
+const scrollTopButtons = Array.from(document.querySelectorAll("[data-scroll-top]"));
 
 const studioImages = [
   "assets/studio/studio-01.jpg",
@@ -201,6 +202,12 @@ const sectionObserver = new IntersectionObserver(
 
     if (visible) {
       setActiveNav(visible.target.dataset.section);
+      sections.forEach((section) => {
+        section.classList.toggle(
+          "is-current-section",
+          section === visible.target && section.id !== "about"
+        );
+      });
     }
   },
   {
@@ -208,6 +215,14 @@ const sectionObserver = new IntersectionObserver(
     threshold: [0.2, 0.45, 0.7],
   }
 );
+
+scrollTopButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
 
 sections.forEach((section) => sectionObserver.observe(section));
 galleryTotal.textContent = String(studioImages.length);
