@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yiftach Roth | Mixing Engineer, Producer & Composer</title>
+    <meta
+      name="description"
+      content="Yiftach Roth - mixing engineer, producer and composer. Professional music production, mixing and studio work."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to Main Content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand-mark" href="#about" aria-label="Yiftach Roth home">
+          <img src="assets/logo.png" alt="YR logo">
+        </a>
+
+        <div class="brand-panel">
+          <a class="site-title" href="#about">Yiftach Roth</a>
+          <p class="site-subtitle">Mixing Engineer, Producer &amp; Composer</p>
+
+          <div class="nav-row">
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span class="sr-only">Menu</span>
+            </button>
+
+            <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+              <a href="#about" data-nav="about">About</a>
+              <a href="#studio" data-nav="studio">My Studio</a>
+              <a href="#media" data-nav="media">Media</a>
+              <a href="#contact" data-nav="contact">Contact</a>
+            </nav>
+
+            <div class="social-links" aria-label="Social links">
+              <a href="https://www.facebook.com/YrothMusic" aria-label="Facebook">
+                <img src="assets/facebook.png" alt="">
+              </a>
+              <a href="https://www.instagram.com/yiftach_roth/" aria-label="Instagram">
+                <img src="assets/instagram.png" alt="">
+              </a>
+              <a href="https://www.youtube.com/channel/UCMaMsAsXhxseZkQMPr9cbrQ" aria-label="YouTube">
+                <img src="assets/youtube.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="about-section page-section" id="about" data-section="about">
+        <div class="about-grid">
+          <figure class="portrait-frame">
+            <img src="assets/portrait.jpg" alt="Yiftach Roth sitting with an electric guitar in the studio">
+          </figure>
+
+          <div class="about-copy">
+            <h1>About</h1>
+            <p>Hi, I'm Yiftach.</p>
+            <p>Making music is my passion.</p>
+            <p>
+              Every musical piece has a story behind it. While there are many ways to tell a story,
+              the right storyteller will let you drift through the atmosphere and emphasize your
+              feelings towards it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section page-section" id="story" data-section="about">
+        <div class="story-inner">
+          <h2>How did I get here?</h2>
+          <p>
+            I started my musical life as an electric guitar player. As the years went by, I learned
+            to play the bass, drums and keyboard. Around the age of 22 I was finally certain that
+            making music is my purpose and desire, so I enrolled in music production school.
+          </p>
+          <p>
+            Nowadays I produce and teach music. I am also a member and producer of the band
+            <a href="https://www.youtube.com/channel/UCMXb8KZeD8R7XrwPxbEJKRg">Fox Temple</a>.
+          </p>
+          <p>
+            For me, one of the most interesting aspects of music production is sound design and
+            mixing, and I put a lot of time and effort in creating the right sound for every piece.
+            I love sharing my knowledge &amp; skills with others, and welcome you to come work with me.
+          </p>
+        </div>
+      </section>
+
+      <section class="studio-section page-section" id="studio" data-section="studio">
+        <div class="section-inner studio-layout">
+          <div class="section-heading">
+            <h2>My Studio</h2>
+            <p>Production, guitars, sound design and mixing in a focused room built for musical detail.</p>
+          </div>
+
+          <div class="studio-gallery" aria-live="polite">
+            <button class="gallery-button gallery-prev" type="button" aria-label="Previous image">‹</button>
+            <img id="studio-image" src="assets/portrait.jpg" alt="Studio view">
+            <button class="gallery-button gallery-next" type="button" aria-label="Next image">›</button>
+            <p class="gallery-count"><span id="gallery-current">1</span>/3</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="media-section page-section" id="media" data-section="media">
+        <div class="section-inner media-layout">
+          <div class="section-heading">
+            <h2>Media</h2>
+            <p>Selected channels and music projects.</p>
+          </div>
+
+          <div class="media-links">
+            <a class="media-link" href="https://www.youtube.com/channel/UCMaMsAsXhxseZkQMPr9cbrQ">
+              <img src="assets/youtube.png" alt="">
+              <span>Yiftach Roth on YouTube</span>
+            </a>
+            <a class="media-link" href="https://www.youtube.com/channel/UCMXb8KZeD8R7XrwPxbEJKRg">
+              <img src="assets/youtube.png" alt="">
+              <span>Fox Temple</span>
+            </a>
+            <a class="media-link" href="https://www.instagram.com/yiftach_roth/">
+              <img src="assets/instagram.png" alt="">
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section page-section" id="contact" data-section="contact">
+        <div class="section-inner contact-layout">
+          <div class="section-heading">
+            <h2>Contact</h2>
+            <p>For mixing, production, studio work and collaborations.</p>
+          </div>
+
+          <form class="contact-form" id="contact-form">
+            <label>
+              Name
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <button type="submit">Send</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy;2022 All Rights Reserved to Yiftach Roth</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
