@@ -116,6 +116,25 @@ function setActiveNav(sectionName) {
   });
 }
 
+function updateCurrentSection() {
+  const anchorY = window.scrollY + Math.min(window.innerHeight * 0.35, 260);
+  const current =
+    sections
+      .filter((section) => section.offsetTop <= anchorY)
+      .sort((a, b) => b.offsetTop - a.offsetTop)[0] || sections[0];
+
+  sections.forEach((section) => {
+    section.classList.toggle(
+      "is-current-section",
+      section === current && section.id !== "about"
+    );
+  });
+
+  if (current) {
+    setActiveNav(current.dataset.section);
+  }
+}
+
 function closeMenu() {
   nav.classList.remove("is-open");
   menuToggle.setAttribute("aria-expanded", "false");
@@ -194,28 +213,6 @@ contactForm.addEventListener("submit", (event) => {
   contactForm.reset();
 });
 
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (visible) {
-      setActiveNav(visible.target.dataset.section);
-      sections.forEach((section) => {
-        section.classList.toggle(
-          "is-current-section",
-          section === visible.target && section.id !== "about"
-        );
-      });
-    }
-  },
-  {
-    rootMargin: "-20% 0px -45% 0px",
-    threshold: [0.2, 0.45, 0.7],
-  }
-);
-
 scrollTopButtons.forEach((button) => {
   button.addEventListener("click", () => {
     document.documentElement.scrollTop = 0;
@@ -224,7 +221,8 @@ scrollTopButtons.forEach((button) => {
   });
 });
 
-sections.forEach((section) => sectionObserver.observe(section));
+window.addEventListener("scroll", updateCurrentSection, { passive: true });
+window.addEventListener("resize", updateCurrentSection);
 galleryTotal.textContent = String(studioImages.length);
 renderProjects();
-setActiveNav("about");
+updateCurrentSection();

@@ -197,6 +197,9 @@ img {
 .section-top-button {
   width: 42px;
   height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(0, 0, 0, 0.18);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.84);
@@ -210,6 +213,11 @@ img {
   pointer-events: none;
   transform: translateY(12px);
   transition: opacity 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+.section-top-button .material-symbols-outlined {
+  font-size: 26px;
+  line-height: 1;
 }
 
 .section-top-button:hover {
